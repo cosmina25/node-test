@@ -1,13 +1,21 @@
 'use strict';
 
-var express = require('express');
+var express  = require('express');
+var mongoose = require('mongoose');
+
+var config        = require('./config/config');
+var configExpress = require('./config/express');
+var configRoutes  = require('./config/routes');
+
+mongoose.connect(config.mongodb.uri, config.mongodb.options);
 
 var app = express();
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
+configExpress(app, express);
+configRoutes(app, express);
+
+var server = app.listen(config.port, function () {
+    return console.log(`scoutsociety.ro listening on port ${config.port} in ${config.env} mode`);
 });
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
-});
+module.exports = server;
