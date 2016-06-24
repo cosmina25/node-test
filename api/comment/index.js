@@ -7,9 +7,12 @@ module.exports = express => {
 
     // CRUD
     router.post   ('/',             comment.create);
-    router.get    ('/:id',          comment.retrieve);
+   router.get    ('/:id',          comment.retrieve);
     router.put    ('/:id',          comment.update);
     router.delete ('/:id',          comment.delete);
+
+    // OTHER
+    router.get    ('/',             comment.retrieveRange);
    
     return router;
 };
