@@ -62,7 +62,7 @@ System.register(['angular2/core', 'angular2/router', '../alert/component', '../c
                     var _this = this;
                     this._observable.subscribe(this._user.create(this.user), function (user) {
                         _this._alert.add(new component_1.Alert('success', 'Felicitari, te-ai inregistrat!'));
-                        _this._router.navigate(['User', { action: 'panel' }]);
+                        _this._router.navigate(['Home']);
                     });
                 };
                 UserComponent.prototype.signin = function () {

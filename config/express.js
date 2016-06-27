@@ -21,6 +21,6 @@ module.exports = function (app, express) {
         res.cookie('XSRF-TOKEN', req.csrfToken());
         next();
     });
-    app.use(express.static(config.root + '/node_modules'));
+    app.use('/node_modules', express.static(config.root + '/node_modules'));
     app.use(express.static(config.root + '/public'));
 };

@@ -49,7 +49,7 @@ export class UserComponent implements OnInit {
     create () {
         this._observable.subscribe(this._user.create(this.user), user => {
             this._alert.add(new Alert('success', 'Felicitari, te-ai inregistrat!'));
-            this._router.navigate(['User', { action: 'panel' }])
+            this._router.navigate(['Home']);
         });
     }
 

@@ -4,36 +4,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <base href="/">
-    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="app/style.css">
 
     <!-- 1. Load libraries -->
     <!-- Configure SystemJS -->
-    <script src="systemjs/dist/system.js"></script>
+    <script src="node_modules/systemjs/dist/system.js"></script>
     <script>
         System.config({
             defaultJSExtensions: true,
             map: {
-                underscore: 'underscore/underscore-min.js'
+                underscore: 'node_modules/underscore/underscore-min.js',
+                systemjs : 'node_modules/systemjs',
+                rxjs: 'node_modules/rxjs',
+                'reflect-metadata' : 'node_modules/reflect-metadata',
+                'es6-shim ' : 'node_modules/es6-shim',
+                'angular2-cookie' : 'node_modules/angular2-cookie',
+                'angular2' : 'node_modules/angular2'
             }
         });
     </script>
 
     <!-- Angular libraries -->
-    <script src="es6-shim/es6-shim.min.js"></script>
-    <script src="angular2/es6/dev/src/testing/shims_for_IE.js"></script>
-    <script src="angular2/bundles/angular2-polyfills.min.js"></script>
-    <script src="rxjs/bundles/Rx.min.js"></script>
-    <script src="angular2/bundles/angular2.js"></script>
-    <script src="angular2/bundles/router.min.js"></script>
-    <script src="angular2/bundles/http.min.js"></script>
-    <script src="angular2-cookie/bundles/angular2-cookie.min.js"></script>
+    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+    <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+    <script src="node_modules/angular2/bundles/angular2-polyfills.min.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.min.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.js"></script>
+    <script src="node_modules/angular2/bundles/router.min.js"></script>
+    <script src="node_modules/angular2/bundles/http.min.js"></script>
+    <script src="node_modules/angular2-cookie/bundles/angular2-cookie.min.js"></script>
 
     <!-- Other libraries -->
-    <script src="jquery/dist/jquery.min.js"></script>
-    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="moment/min/moment.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/moment/min/moment.min.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>
