@@ -11,7 +11,7 @@ module.exports = function (app, express) {
     app.use('/api/user', require(config.root + '/api/user')(express));
     app.use('/api/comment', require(config.root + '/api/comment')(express));
     
-    app.get('/*', (req, res) => res.sendFile(config.root + '/index.html'));
+    app.get('/*', (req, res) => res.sendFile(config.root + '/public/index.html'));
 
     app.all('/*', (req, res) => res.status(404).send('Route not found'));
 };
