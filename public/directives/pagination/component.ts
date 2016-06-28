@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
+//noinspection TypeScriptCheckImport
 import  _ from 'underscore';
 
 import { List } from '../../common/classes';

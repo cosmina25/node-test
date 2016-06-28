@@ -1,60 +1,51 @@
 import { Component, ViewChild, OnInit } from 'angular2/core';
 import { Router, RouteParams } from 'angular2/router';
-//import  _ from 'underscore';
+//noinspection TypeScriptCheckImport
+import  _ from 'underscore';
 
-import { AlertComponent, Alert } from '../alert/component';
+import { AlertComponent, Alert } from '../directives/alert/component';
 import { ObservableUtilities } from '../common/utilities';
 import { UserService } from './service';
 import { User } from './model';
-//import { AuthorService, Author } from '../author/component';
+//import { CommentListComponent } from '../comment/component';
 
 @Component({
     selector: 'user',
     templateUrl: './user/index.html',
     directives: [
-        AlertComponent
+        AlertComponent,
+        // CommentListComponent
     ],
     providers: [
-        UserService,
-       // AuthorService
+        UserService
     ]
 })
 export class UserComponent implements OnInit {
     @ViewChild(AlertComponent) _alert: AlertComponent;
     user: User = new User;
-    //author: Author;
-    action: string = 'signin';
+    signup: boolean = false;
 
     constructor(
         private _user: UserService,
-        //private _author: AuthorService,
         private _router: Router,
         private _params: RouteParams,
         private _observable: ObservableUtilities
     ) {}
 
     ngOnInit () {
-        if (this._params.get('action') === 'signup') {
-            this.action = 'create';
-        }
-
-        this._user.retrieve().subscribe(user => {
-            this.user = user;
-            //if (_.contains(user.roles, 'author')) {
-                //this._observable.subscribe(this._author.retrieve(user._id), author => this.author = author);
-            //}
-        }, err => {});
+        this.signup = this._params.get('action') === 'signup';
+        this._observable.subscribe(this._user.retrieve(), user => this.user = user);
     }
 
     create () {
         this._observable.subscribe(this._user.create(this.user), user => {
             this._alert.add(new Alert('success', 'Felicitari, te-ai inregistrat!'));
-            this._router.navigate(['Home']);
+            this._router.navigate(['Comment'])
         });
     }
 
     signin () {
-        this._observable.subscribe(this._user.signin(this.user), user => this._router.navigate(['User', { action: 'panel' }]));
+        this._observable.subscribe(this._user.signin(this.user), user => this._router.navigate(['Comment']));
     }
 
     signout () {
@@ -63,7 +54,7 @@ export class UserComponent implements OnInit {
     }
 
     submit () {
-        this[this.action]();
+        this.signup ? this.create() : this.signin();
     }
 }
 

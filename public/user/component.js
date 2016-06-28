@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../alert/component', '../common/utilities', './service', './model'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../directives/alert/component', '../common/utilities', './service', './model'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -33,48 +33,38 @@ System.register(['angular2/core', 'angular2/router', '../alert/component', '../c
                 model_1 = model_1_1;
             }],
         execute: function() {
-            //import { AuthorService, Author } from '../author/component';
+            //import { CommentListComponent } from '../comment/component';
             UserComponent = (function () {
-                function UserComponent(_user, 
-                    //private _author: AuthorService,
-                    _router, _params, _observable) {
+                function UserComponent(_user, _router, _params, _observable) {
                     this._user = _user;
                     this._router = _router;
                     this._params = _params;
                     this._observable = _observable;
                     this.user = new model_1.User;
-                    //author: Author;
-                    this.action = 'signin';
+                    this.signup = false;
                 }
                 UserComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    if (this._params.get('action') === 'signup') {
-                        this.action = 'create';
-                    }
-                    this._user.retrieve().subscribe(function (user) {
-                        _this.user = user;
-                        //if (_.contains(user.roles, 'author')) {
-                        //this._observable.subscribe(this._author.retrieve(user._id), author => this.author = author);
-                        //}
-                    }, function (err) { });
+                    this.signup = this._params.get('action') === 'signup';
+                    this._observable.subscribe(this._user.retrieve(), function (user) { return _this.user = user; });
                 };
                 UserComponent.prototype.create = function () {
                     var _this = this;
                     this._observable.subscribe(this._user.create(this.user), function (user) {
                         _this._alert.add(new component_1.Alert('success', 'Felicitari, te-ai inregistrat!'));
-                        _this._router.navigate(['Home']);
+                        _this._router.navigate(['Comment']);
                     });
                 };
                 UserComponent.prototype.signin = function () {
                     var _this = this;
-                    this._observable.subscribe(this._user.signin(this.user), function (user) { return _this._router.navigate(['User', { action: 'panel' }]); });
+                    this._observable.subscribe(this._user.signin(this.user), function (user) { return _this._router.navigate(['Comment']); });
                 };
                 UserComponent.prototype.signout = function () {
                     this._user.signout();
                     this._router.navigate(['User', { action: 'signin' }]);
                 };
                 UserComponent.prototype.submit = function () {
-                    this[this.action]();
+                    this.signup ? this.create() : this.signin();
                 };
                 __decorate([
                     core_1.ViewChild(component_1.AlertComponent), 
@@ -85,10 +75,10 @@ System.register(['angular2/core', 'angular2/router', '../alert/component', '../c
                         selector: 'user',
                         templateUrl: './user/index.html',
                         directives: [
-                            component_1.AlertComponent
+                            component_1.AlertComponent,
                         ],
                         providers: [
-                            service_1.UserService,
+                            service_1.UserService
                         ]
                     }), 
                     __metadata('design:paramtypes', [service_1.UserService, router_1.Router, router_1.RouteParams, utilities_1.ObservableUtilities])

@@ -45,5 +45,6 @@ export class UserService {
 
     signout () {
         this._cookieService.remove('jwt');
+        
     }
 }

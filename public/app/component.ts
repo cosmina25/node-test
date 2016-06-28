@@ -3,8 +3,9 @@ import { RouteConfig, ROUTER_PROVIDERS } from 'angular2/router';
 import { HTTP_PROVIDERS, RequestOptions } from 'angular2/http';
 import { CookieService } from 'angular2-cookie/core';
 
-import { AlertComponent, Alerts } from '../alert/component'
+import { AlertComponent, Alerts } from '../directives/alert/component'
 import { UserComponent, UserService } from '../user/component';
+import{ CommentListComponent } from '../comment/component';
 
 import { ExtendedRequestOptions } from '../common/extensions';
 import { ObservableUtilities } from '../common/utilities';
@@ -25,17 +26,17 @@ import { ObservableUtilities } from '../common/utilities';
     ]
 })
 @RouteConfig([
-    {
-        path: '/',
-        name: 'Home',
-        component: UserComponent,
-        useAsDefault: true
-    },
+   
     {
         path: '/user/:action',
         name: 'User',
         component: UserComponent
     },
+    {
+        path: '/comment',
+        name: 'Comment',
+        component: CommentListComponent,
+    }
   /*  {
         path: '/author',
         name: 'Author',
