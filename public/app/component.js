@@ -68,9 +68,10 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', 'angular2-
                             component: component_2.UserComponent
                         },
                         {
-                            path: '/comment',
+                            path: '/',
                             name: 'Comment',
                             component: component_3.CommentListComponent,
+                            useAsDefault: true
                         }
                     ]), 
                     __metadata('design:paramtypes', [])

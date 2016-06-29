@@ -5,7 +5,7 @@ import { CookieService } from 'angular2-cookie/core';
 
 import { AlertComponent, Alerts } from '../directives/alert/component'
 import { UserComponent, UserService } from '../user/component';
-import{ CommentListComponent } from '../comment/component';
+import{ CommentListComponent} from '../comment/component';
 
 import { ExtendedRequestOptions } from '../common/extensions';
 import { ObservableUtilities } from '../common/utilities';
@@ -26,36 +26,37 @@ import { ObservableUtilities } from '../common/utilities';
     ]
 })
 @RouteConfig([
-   
+
     {
         path: '/user/:action',
         name: 'User',
         component: UserComponent
     },
     {
-        path: '/comment',
+        path: '/',
         name: 'Comment',
         component: CommentListComponent,
+        useAsDefault: true
     }
-  /*  {
-        path: '/author',
-        name: 'Author',
-        component: AuthorComponent,
-    },
-    {
-        path: '/article/:id',
-        name: 'Article',
-        component: ArticleComponent,
-    },
-    {
-        path: '/articles',
-        name: 'Articles',
-        component: ArticleListComponent,
-    },
-    {
-        path: '/article/:id/edit',
-        name: 'ArticleEdit',
-        component: ArticleEditComponent,
-    },*/
+    /*  {
+     path: '/author',
+     name: 'Author',
+     component: AuthorComponent,
+     },
+     {
+     path: '/article/:id',
+     name: 'Article',
+     component: ArticleComponent,
+     },
+     {
+     path: '/articles',
+     name: 'Articles',
+     component: ArticleListComponent,
+     },
+     {
+     path: '/article/:id/edit',
+     name: 'ArticleEdit',
+     component: ArticleEditComponent,
+     },*/
 ])
 export class AppComponent {}

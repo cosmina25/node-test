@@ -1,7 +1,17 @@
 
 <div class="ui-foot bg-green">
-    <button class="ui-button" (click)="signout()">{{signup ? 'Sign out' : 'Sign in'}}</button>
+    <button class="ui-button" (click)="signout()" >{{user._id ? 'Sign out' : 'Sign in'}}</button>
+
+    </div>
+
+<pagination *ngIf="list.pages > 1" [(list)]="list" (change)="page($event)" class="article-pagination text-center"></pagination>
+<div class="-comment">
+    <div class="ui-input" style="margin: 21px 0;">
+        <input type="text" class="form-control text-center" [(ngModel)]="comment.content" placeholder="Content">
+    </div>
+
+
+<div class="file-input btn btn-block btn-primary btn-file bg-lblue">
+    <button id="Submit" (click)="submit()">Submit</button>
 </div>
-
-
-
+</div>
