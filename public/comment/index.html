@@ -2,16 +2,25 @@
 <div class="ui-foot bg-green">
     <button class="ui-button" (click)="signout()" >{{user._id ? 'Sign out' : 'Sign in'}}</button>
 
-    </div>
+</div>
 
-<pagination *ngIf="list.pages > 1" [(list)]="list" (change)="page($event)" class="article-pagination text-center"></pagination>
+<pagination *ngIf="list.pages > 1" [(list)]="list" (change)="page($event)" class="comment-pagination text-center"></pagination>
 <div class="-comment">
     <div class="ui-input" style="margin: 21px 0;">
         <input type="text" class="form-control text-center" [(ngModel)]="comment.content" placeholder="Content">
     </div>
 
+    <div class="file-input btn btn-block btn-primary btn-file bg-lblue">
+        <button id="Submit" (click)="submit()">Submit</button>
+    </div>
+    <div class="comment" *ngFor="let comment of list.items">
+        <div class="comment-main">
 
-<div class="file-input btn btn-block btn-primary btn-file bg-lblue">
-    <button id="Submit" (click)="submit()">Submit</button>
-</div>
-</div>
+            <div class="comment-content" [innerHTML]="comment.content">
+                </div>
+            </div>
+        </div>
+    </div>
+
+            <div class="comment-main text-center" *ngIf="list.items.length === 0"><h1>No comments found!</h1></div>
+            <alerts></alerts>

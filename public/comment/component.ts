@@ -22,7 +22,7 @@ import { CommentService } from './service';
     providers: [
         UserService,
         CommentService
-
+        
     ]
 })
 export class CommentListComponent implements OnInit {
@@ -41,6 +41,7 @@ export class CommentListComponent implements OnInit {
         private _params: RouteParams,
         private _user: UserService,
         private _observable: ObservableUtilities
+        
     ) {}
 
     ngOnInit () {
@@ -54,7 +55,7 @@ export class CommentListComponent implements OnInit {
         // check for size in cookie 'articles-per-page'
 
         this.list.params = _.pick({
-            title: this._params.get("title")
+            content: this._params.get("content")
         }, _.identity);
 
         this.update();
@@ -80,8 +81,8 @@ export class CommentListComponent implements OnInit {
         this._observable.subscribe(this._comment.create(this.comment), comment => {
 
             this.comment.content = '';
-
             this._alert.add(new Alert('success', 'Commet creat!'));
+            this.update();
         });
     }
 

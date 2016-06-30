@@ -13,8 +13,8 @@ import { User } from './model';
     selector: 'user',
     templateUrl: './user/index.html',
     directives: [
-        AlertComponent,
-        // CommentListComponent
+        AlertComponent
+        //CommentListComponent
     ],
     providers: [
         UserService

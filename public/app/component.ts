@@ -13,6 +13,7 @@ import { ObservableUtilities } from '../common/utilities';
 @Component({
     selector: 'app',
     template: `<router-outlet></router-outlet>`,
+
     //styleUrls: [ 'app/style.css' ],
     providers: [
         ROUTER_PROVIDERS,

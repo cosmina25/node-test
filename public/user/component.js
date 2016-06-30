@@ -75,7 +75,7 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
                         selector: 'user',
                         templateUrl: './user/index.html',
                         directives: [
-                            component_1.AlertComponent,
+                            component_1.AlertComponent
                         ],
                         providers: [
                             service_1.UserService
