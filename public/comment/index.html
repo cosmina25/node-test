@@ -1,8 +1,6 @@
 
 <div class="ui-foot bg-green">
-    <button class="ui-button" (click)="signout()" >{{user._id ? 'Sign out' : 'Sign in'}}</button>
-
-</div>
+    <button class="ui-button" (click)="signout()" >{{user._id ? 'Sign out' : 'Sign in'}}</button></div>
 
 <pagination *ngIf="list.pages > 1" [(list)]="list" (change)="page($event)" class="comment-pagination text-center"></pagination>
 <div class="-comment">

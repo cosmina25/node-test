@@ -73,9 +73,12 @@ export class CommentListComponent implements OnInit {
     page (page: number) {
         //noinspection TypeScriptValidateTypes
         this.list.page = page;
-        this._router.navigate(['Comments', _.assign(this._params.params, { page: page })]);
+        this._router.navigate(['Comment', _.assign(this._params.params, { page: page })]);
         this.update();
     }
+    //size (size: number) {
+        // set cookie 'comments-per-page'
+    //}
 
     submit () {
         this._observable.subscribe(this._comment.create(this.comment), comment => {
