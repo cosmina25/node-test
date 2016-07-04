@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 var mongoose  = require('mongoose');
 var Schema    = mongoose.Schema;
 var _         = require('lodash');
@@ -7,17 +7,17 @@ var _         = require('lodash');
 var BadgeSchema = new Schema ({
     user: {
         type : Schema.ObjectId,
-        ref : User,
+        ref : 'User' ,
         required : "badge requires a user id"
         
     },
     type : {
-        type: string,
-        required : ""
+        type: String,
+        required : "badge requires a type "
     },
      comment: {
-         type : Schema.Object,
-         ref : Comment,
+         type : Schema.ObjectId,
+         ref : 'Comment',
          required : "badge requires a comment"
      }
 
