@@ -23,7 +23,7 @@ module.exports = request => {
             return {
                 user: userId,
                 comment: commentId,
-                type: `fs-type-${inc}`
+                type: `fa-type-${inc}`
             }
         })
 

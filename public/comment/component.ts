@@ -90,3 +90,5 @@ export class CommentListComponent implements OnInit {
     }
 
 }
+
+export { CommentService, Comment };

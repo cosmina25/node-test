@@ -9,6 +9,7 @@ var coe      = require('../../modules/co-express');
 
 var Comment  = require('./model');
 var User     = require('../user/model');
+var Badge     = require('../badge/model');
 
 module.exports = {
 
@@ -69,6 +70,10 @@ module.exports = {
 
         let comments = yield Comment.find(query, '-votes', { lean: true, skip: range.skip, limit: range.limit, sort: '-created'  });
         let count    = yield Comment.count(query);
+
+        for (let comment of comments) {
+            comment.badges = yield Badge.find({ comment: comment._id }, null, { lean: true });
+        }
 
         res.set("Accept-Ranges", 'comments');
 
