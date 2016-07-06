@@ -13,12 +13,10 @@
     </div>
     <div class="comment" *ngFor="let comment of list.items">
         <div class="comment-main">
-
-            <div class="comment-content" [innerHTML]="comment.content">
-                </div>
-            </div>
+            <div class="comment-content" [innerHTML]="comment.content"></div>
+            <badges ></badges>
         </div>
     </div>
-
+</div>
             <div class="comment-main text-center" *ngIf="list.items.length === 0"><h1>No comments found!</h1></div>
             <alerts></alerts>

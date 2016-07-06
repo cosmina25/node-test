@@ -4,8 +4,11 @@ import { RouteParams } from 'angular2/router';
 import { CommentService, Comment } from '../comment/component';
 //noinspection TypeScriptCheckImport
 import  _ from 'underscore';
+import { BadgeService } from './service';
 
-class Badge {
+import { Badge } from './model';
+
+export class BadgeCount {
     type: string;
     count: number;
 }
@@ -21,9 +24,10 @@ export class BadgeComponent implements OnInit {
     @Input() comment: Comment ;
     @Output() change  = new EventEmitter<number>();
 
-    badges: Array<Badge> = [];
+    badges: Array<BadgeCount> = [];
 
     constructor(
+        private _badge: BadgeService,
         private _observable: ObservableUtilities,
         private _comment: CommentService
     ) {}
@@ -44,5 +48,9 @@ export class BadgeComponent implements OnInit {
         }
     }
 
+    onClick (type: string) {
+        this._observable.subscribe(this._badge.create(new Badge(this.comment.user, this.comment._id, type)), () => this.badges[type]++ );
+    }
 }
-export { Badge };
+
+export { BadgeService, Badge };

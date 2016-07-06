@@ -6,7 +6,7 @@ export class List {
     pages: number;
     size:  number;
     page:  number;
-    badges: Array<string>;
+
     params: Object;
 
     constructor () {
@@ -15,7 +15,6 @@ export class List {
         this.pages = 0;
         this.size  = 10;
         this.page  = 1;
-        this.badges = [] ;
         this.params = {};
     }
 }

@@ -13,7 +13,6 @@ System.register([], function(exports_1, context_1) {
                     this.pages = 0;
                     this.size = 10;
                     this.page = 1;
-                    this.badges = [];
                     this.params = {};
                 }
                 return List;

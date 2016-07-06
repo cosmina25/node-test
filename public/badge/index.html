@@ -1,7 +1,8 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
 <div>
-    <ul class ='badge'>
-        <li *ngFor="let badge of badges"><i class=" {{badge.type}}  {{ number ? badge.type : ''}} "></i></li>
-        <div *ngIf="number" class="noti_bubble"><span class="one-pixel-right">{{number}}</span></div>
+    <ul class='badge'>
+            <li id="notiContainer" *ngFor="let badge of badges" (click)="onClick(badge.type)">
+                <i class="fa {{badge.type}} "></i>
+                <div *ngIf="badge.count" class="noti_bubble"><span class="one-pixel-right">{{badge.count}}</span></div>
+            </li>
     </ul>
 </div>
