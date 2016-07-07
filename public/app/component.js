@@ -43,7 +43,10 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', 'angular2-
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent() {
+                function AppComponent(_user) {
+                    var _this = this;
+                    this._user = _user;
+                    this._user.retrieve().subscribe(function (user) { return _this._user.user = user; }, function () { });
                 }
                 AppComponent = __decorate([
                     core_1.Component({
@@ -74,7 +77,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', 'angular2-
                             useAsDefault: true
                         }
                     ]), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [component_2.UserService])
                 ], AppComponent);
                 return AppComponent;
             }());

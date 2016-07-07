@@ -34,7 +34,7 @@ export class UserComponent implements OnInit {
 
     ngOnInit () {
         this.signup = this._params.get('action') === 'signup';
-        this._observable.subscribe(this._user.retrieve(), user => this.user = user);
+        this.user = this._user.user;
     }
 
     create () {

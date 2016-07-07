@@ -3,7 +3,7 @@ import { Router, RouteParams } from 'angular2/router';
 import { URLSearchParams } from 'angular2/http';
 import{AlertComponent,Alert} from '../directives/alert/component' ;
 import { PaginationComponent } from '../directives/pagination/component';
-import { BadgeComponent, Badge } from '../badge/component';
+import { BadgeComponent } from '../badge/component';
 
 
 import { UserService } from '../user/service';
@@ -19,12 +19,10 @@ import { CommentService } from './service';
     directives: [
         PaginationComponent,
         AlertComponent,
-        //BadgeComponent
+        BadgeComponent
     ],
     providers: [
-        UserService,
         CommentService
-        
     ]
 })
 export class CommentListComponent implements OnInit {
@@ -34,10 +32,7 @@ export class CommentListComponent implements OnInit {
     //noinspection TypeScriptValidateTypes
     list: CommentList = new  CommentList;
     comment: Comment = new Comment;
-    //badge : Badge= new Badge;
-
-
-
+    
     constructor (
         private _comment: CommentService,
         private _router: Router,
@@ -91,11 +86,7 @@ export class CommentListComponent implements OnInit {
         });
     }
 
-   /*badge (comment: Comment, type: string) {
-        this._observable.subscribe(this._comment.badge(comment._id, type), newComment => {
-            comment.badges = newComment.badges;
-        });
-    }*/
+
 }
 
 export { CommentService, Comment };

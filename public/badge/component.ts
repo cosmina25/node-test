@@ -1,41 +1,45 @@
-import { Component, Input, Output, EventEmitter, OnInit } from 'angular2/core';
-import { ObservableUtilities } from '../common/utilities'
+import { Component, Input,  OnInit } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
-import { CommentService, Comment } from '../comment/component';
+import { BadgeService } from './service' ;
+import  { UserService } from '../user/service';
+import { Comment } from '../comment/component';
+import { Badge} from './model';
+
 //noinspection TypeScriptCheckImport
 import  _ from 'underscore';
-import { BadgeService } from './service';
-
-import { Badge } from './model';
+import {from} from "rxjs/observable/from";
+import {ObservableUtilities} from "../common/utilities";
 
 export class BadgeCount {
     type: string;
     count: number;
+    
 }
 
 @Component({
     selector: 'badges',
-    templateUrl: './badge/index.html',
+    templateUrl: './index.html',
     providers: [
-        CommentService
+        BadgeService
     ]
 })
 export class BadgeComponent implements OnInit {
     @Input() comment: Comment ;
-    @Output() change  = new EventEmitter<number>();
-
+    
     badges: Array<BadgeCount> = [];
 
     constructor(
-        private _badge: BadgeService,
-        private _observable: ObservableUtilities,
-        private _comment: CommentService
+
+    private _user: UserService,
+    private _badge : BadgeService,
+    private _observable: ObservableUtilities
+
     ) {}
 
     ngOnInit () {
-        let count = {};
-        for (let badge of this.comment.badges) {
-            count[badge.type] = count[badge.type] ? 0 : count[badge.type] + 1;
+        let count = {} ;
+        for( let badge of this.comment.badges) {
+            count[badge.type] = count[badge.type] || count[badge.type] === 0 ?  count[badge.type]+ 1  : 0 ;
         }
 
         for (let badge in count) {
@@ -46,11 +50,23 @@ export class BadgeComponent implements OnInit {
                 });
             }
         }
+
+
+        let defaultBadges = ['fa-bomb', 'fa-cubes', 'fa-heart'] ;
+        for(let defaultBadge of defaultBadges) {
+            if(!count[defaultBadge] && count[defaultBadge] !==0 ) {
+                this.badges.push({
+                    type: defaultBadge,
+                    count: 0
+                })
+            }
+        }
+
+        
     }
 
-    onClick (type: string) {
-        this._observable.subscribe(this._badge.create(new Badge(this.comment.user, this.comment._id, type)), () => this.badges[type]++ );
+    onClick() {
+        
     }
+    
 }
-
-export { BadgeService, Badge };

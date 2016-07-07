@@ -4,11 +4,13 @@ import { HTTP_PROVIDERS, RequestOptions } from 'angular2/http';
 import { CookieService } from 'angular2-cookie/core';
 
 import { AlertComponent, Alerts } from '../directives/alert/component'
-import { UserComponent, UserService } from '../user/component';
+import { UserComponent, UserService, User } from '../user/component';
 import{ CommentListComponent} from '../comment/component';
 
 import { ExtendedRequestOptions } from '../common/extensions';
 import { ObservableUtilities } from '../common/utilities';
+
+
 
 @Component({
     selector: 'app',
@@ -60,4 +62,9 @@ import { ObservableUtilities } from '../common/utilities';
      component: ArticleEditComponent,
      },*/
 ])
-export class AppComponent {}
+export class AppComponent {
+
+    constructor(private _user: UserService) {
+        this._user.retrieve().subscribe(user => this._user.user = user, () => {});
+    }
+}

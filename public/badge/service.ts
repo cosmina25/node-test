@@ -1,10 +1,12 @@
 
-import { Http, Response, RequestOptions } from 'angular2/http';
+import { Http, Response, RequestOptions, URLSearchParams } from 'angular2/http';
 import { ObservableUtilities } from '../common/utilities';
 import { Injectable } from 'angular2/core';
 import { Observable } from 'rxjs/Observable';
+import { CookieService } from 'angular2-cookie/core';
 import 'rxjs/Rx';
 
+import { User } from '../user/model';
 import { Badge } from './model';
 
 @Injectable()
@@ -39,9 +41,11 @@ export class BadgeService {
             .catch(this._observable.error);
 
     }
-    
     delete (id: string) : Observable<Response> {
         return this._http.delete(`${this._uri}/${id}`)
             .catch(this._observable.error);
     }
+
+
+
 }

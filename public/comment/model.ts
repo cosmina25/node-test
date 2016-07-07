@@ -1,12 +1,12 @@
 import { List } from '../common/classes';
 import { User } from '../user/model';
-import { Badge} from '../badge/component';
+import { BadgeCount} from '../badge/component';
 
 export class Comment {
     _id: string;
     user: User;
     content: string;
-    badges : Array<Badge>;
+    badges : Array<BadgeCount>;
     
 
     constructor() {

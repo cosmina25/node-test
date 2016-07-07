@@ -9,6 +9,7 @@ import { ObservableUtilities } from '../common/utilities';
 
 @Injectable()
 export class UserService {
+    user: User = new User;
     private _uri = 'api/user';
 
     constructor (

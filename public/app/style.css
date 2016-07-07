@@ -829,6 +829,7 @@ ul li a{
 ul li a:hover, ul li a:focus {
     color:red;
 }
+
 #notiContainer{
     position:relative;
     margin: 4px;
@@ -885,16 +886,23 @@ ul li a:hover, ul li a:focus {
     top: 0;
     right: 0;
 }
-           .notification-container {
-               position: relative;
-               width: 16px;
-               height: 16px;
-               top: 15px;
-               left: 15px;}
+
+.notification-container {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    top: 15px;
+    left: 15px;
+}
 
 i {
     color: #fff;
 }
 
+.badge {
+    float: right;
+}
 
-
+.badge li {
+    display: inline;
+}

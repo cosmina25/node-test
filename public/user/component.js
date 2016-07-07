@@ -44,9 +44,8 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
                     this.signup = false;
                 }
                 UserComponent.prototype.ngOnInit = function () {
-                    var _this = this;
                     this.signup = this._params.get('action') === 'signup';
-                    this._observable.subscribe(this._user.retrieve(), function (user) { return _this.user = user; });
+                    this.user = this._user.user;
                 };
                 UserComponent.prototype.create = function () {
                     var _this = this;
