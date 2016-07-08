@@ -18,7 +18,7 @@ export class BadgeCount {
 
 @Component({
     selector: 'badges',
-    templateUrl: './index.html',
+    templateUrl: './badge/index.html',
     providers: [
         BadgeService
     ]
@@ -58,15 +58,21 @@ export class BadgeComponent implements OnInit {
                 this.badges.push({
                     type: defaultBadge,
                     count: 0
-                })
+                });
             }
         }
 
         
     }
 
-    onClick() {
-        
+    onClick (type: string) {
+        this._observable.subscribe(this._badge.create(new Badge(this.comment, type)), () => {
+            for (let badge of this.badges) {
+                if (badge.type === type) {
+                    badge.count++;
+                }
+            }
+        });
     }
-    
 }
+export { BadgeService, Badge };

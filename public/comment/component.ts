@@ -20,6 +20,7 @@ import { CommentService } from './service';
         PaginationComponent,
         AlertComponent,
         BadgeComponent
+       
     ],
     providers: [
         CommentService

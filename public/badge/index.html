@@ -1,5 +1,10 @@
 <div>
-
-
-
+    <ul class='badge' *ngIf="_user.user._id">
+        <li id="notiContainer" *ngFor="let badge of badges">
+            <i class="fa {{badge.type}}" (click)="onClick(badge.type)"></i>
+            <span *ngIf="badge.count" class="noti_bubble">
+                <span class="one-pixel-right">{{badge.count}}</span>
+            </span>
+        </li>
+    </ul>
 </div>

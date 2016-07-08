@@ -20,7 +20,7 @@ module.exports = {
         if (!req.user)
             return res.status(401).send("Not authenticated");
 
-       let comment = yield Comment.create(_.assign(sanitizeComment(req.body), { user: req.user._id }));
+       let comment = yield Comment.create(_.assign(sanitizeComment(req.body), { user: req.user._id })); // 'curata' emailul de scripturi
 
         // comment = yield Comment.populate(article, {path: 'user'});
 

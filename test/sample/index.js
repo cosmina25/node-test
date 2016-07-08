@@ -4,7 +4,7 @@ var co = require('co');
 
 module.exports = request => {
     let sample = {
-        user: inc => ({
+        user: inc => ({  //tiparul pe  care trebuie sa-l respecte userul
             email: `user${inc}@domain.com`,
             password: 'password'
         }),
@@ -23,7 +23,7 @@ module.exports = request => {
             return {
                 user: userId,
                 comment: commentId,
-                type: `fa-type-${inc}`
+                type: `fa-type-${inc}` // forma badge.ului
             }
         })
 
