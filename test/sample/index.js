@@ -25,6 +25,17 @@ module.exports = request => {
                 comment: commentId,
                 type: `fa-type-${inc}` // forma badge.ului
             }
+        }),
+        poster : userId => inc => co(function *() {
+            userId =userId || (yield request ({ uri: '/api/user' , method: 'POST' , body: sample.user(inc) })).body._id;
+            
+            return {
+                user: userId,
+                name: `Poster${inc}`,
+                description: `My description ${inc}`,
+                badge: `Special badeg fa-type-${inc}`
+            }
+            
         })
 
     };

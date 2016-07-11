@@ -1,0 +1,36 @@
+<!-- Form -->
+<form (ngSubmit)="submit()" novalidate>
+    <!-- Ui-40 -->
+    <div class="ui-40">
+        <div class="ui-head bg-green">
+            <!-- Heading -->
+            <h2>Poster</h2>
+        </div>
+        <!-- Ui-block -->
+        <div class="ui-block bg-white">
+            <div class="form-group has-feedback ui-input">
+                <input class="form-control" [(ngModel)]="poster.name" placeholder="nume">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="ui-block bg-white">
+            <div class="ui-input">
+                <input type="text" class="form-control" [(ngModel)]="poster.description" placeholder="descriere profil">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="ui-block bg-white">
+            <div class="ui-input">
+                <input type="text" class="form-control" [(ngModel)]="poster.badge" placeholder="badge">
+            </div>
+        </div>
+            <div class="ui-foot bg-green">
+                <!-- Buttons -->
+                <button type="submit" class="ui-button">OK</button>
+            </div>
+    </div>
+</form>
+
+<div class="ui-40">
+    <alerts></alerts>
+</div>

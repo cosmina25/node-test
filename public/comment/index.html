@@ -1,6 +1,10 @@
 
 <div class="ui-foot bg-green">
     <button class="ui-button" (click)="signout()" >{{user._id ? 'Sign out' : 'Sign in'}}</button>
+    <poster>  <div class=" file-input btn btn-black btn-primary btn-file bg-purple">
+        <button id="Profile" (click)="profile()" > Profile</button>
+    </div>
+    </poster>
 </div>
 
 <pagination *ngIf="list.pages > 1" [(list)]="list" (change)="page($event)" class="comment-pagination text-center"></pagination>
@@ -17,6 +21,8 @@
             <badges [(comment)]="list.items[i]"></badges>
             <div class="comment-content" [innerHTML]="comment.content"></div>
         </div>
+
+
     </div>
 </div>
 <div class="comment-main text-center" *ngIf="list.items.length === 0"><h1>No comments found!</h1></div>

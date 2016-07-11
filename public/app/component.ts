@@ -9,6 +9,7 @@ import{ CommentListComponent} from '../comment/component';
 
 import { ExtendedRequestOptions } from '../common/extensions';
 import { ObservableUtilities } from '../common/utilities';
+import {PosterComponent} from "../poster/component";
 
 
 
@@ -40,6 +41,11 @@ import { ObservableUtilities } from '../common/utilities';
         name: 'Comment',
         component: CommentListComponent,
         useAsDefault: true
+    },
+    {
+        path: '/posters',
+        name: 'Poster',
+        component: PosterComponent
     }
     /*  {
      path: '/author',

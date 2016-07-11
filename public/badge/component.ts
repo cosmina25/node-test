@@ -4,6 +4,7 @@ import { BadgeService } from './service' ;
 import  { UserService } from '../user/service';
 import { Comment } from '../comment/component';
 import { Badge} from './model';
+import  { Poster } from '../poster/model';
 
 //noinspection TypeScriptCheckImport
 import  _ from 'underscore';
@@ -25,6 +26,7 @@ export class BadgeCount {
 })
 export class BadgeComponent implements OnInit {
     @Input() comment: Comment ;
+    @Input() poster: Poster;
     
     badges: Array<BadgeCount> = [];
 

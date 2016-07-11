@@ -105,7 +105,7 @@ class CRUD
             expect(res.headers['accept-ranges']).to.equal(type, util.errMsg(res, 'body'));
             expect(res.headers['content-range']).to.equal(`${type} 0-9/15`, util.errMsg(res, 'body'));
             expect(res.body).to.be.an('array', util.errMsg(res, 'body')).with.length(9, util.errMsg(res, 'body'));
-            expect(res.body).to.eql(_.slice(resources, 0, 9), util.errMsg(res, 'body'));
+            expect(_.pick(res.body, self.properties)).to.eql(_.pick(_.slice(resources, 0, 9), self.properties), util.errMsg(res, 'body'));
 
             res = yield request({ uri: self.uri, headers: { Range: `${type}=9-15` } });
 
@@ -113,7 +113,7 @@ class CRUD
             expect(res.headers['accept-ranges']).to.equal(type, util.errMsg(res, 'body'));
             expect(res.headers['content-range']).to.equal(`${type} 9-15/15`, util.errMsg(res, 'body'));
             expect(res.body).to.be.an('array', util.errMsg(res, 'body')).with.length(6, util.errMsg(res, 'body'));
-            expect(res.body).to.eql(_.slice(resources, 9, 15), util.errMsg(res, 'body'));
+            expect(_.pick(res.body, self.properties)).to.eql(_.pick(_.slice(resources, 9, 15), self.properties), util.errMsg(res, 'body'));
 
             res = yield request({ uri: self.uri, headers: { Range: `${type}=15-1000` } });
             expect(res.statusCode).to.equal(416, util.errMsg(res, 'body'));

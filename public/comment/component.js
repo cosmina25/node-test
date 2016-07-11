@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../directives/alert/component', '../directives/pagination/component', '../badge/component', '../user/service', '../common/utilities', '../user/component', './model', './service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../directives/alert/component', '../directives/pagination/component', '../badge/component', '../user/service', '../common/utilities', '../user/component', './model', './service', '../poster/component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, component_1, component_2, component_3, service_1, utilities_1, component_4, model_1, service_2;
+    var core_1, router_1, component_1, component_2, component_3, service_1, utilities_1, component_4, model_1, service_2, component_5;
     var CommentListComponent;
     return {
         setters:[
@@ -43,6 +43,9 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
             },
             function (service_2_1) {
                 service_2 = service_2_1;
+            },
+            function (component_5_1) {
+                component_5 = component_5_1;
             }],
         execute: function() {
             CommentListComponent = (function () {
@@ -57,11 +60,15 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
                     //noinspection TypeScriptValidateTypes
                     this.list = new model_1.CommentList;
                     this.comment = new model_1.Comment;
+                    this.poster = new component_5.Poster;
                 }
                 CommentListComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this.signup = this._params.get('action') === 'signup';
-                    this._observable.subscribe(this._user.retrieve(), function (user) { return _this.user = user; });
+                    this._observable.subscribe(this._user.retrieve(), function (user) {
+                        _this.user = user;
+                        // Poster service get
+                    });
                     var page = this._params.get("page");
                     if (page) {
                         this.list.page = Number(page);
@@ -85,9 +92,9 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
                     this._router.navigate(['Comment', _.assign(this._params.params, { page: page })]);
                     this.update();
                 };
-                //size (size: number) {
-                // set cookie 'comments-per-page'
-                //}
+                CommentListComponent.prototype.profile = function () {
+                    this._router.navigate(['Poster']);
+                };
                 CommentListComponent.prototype.submit = function () {
                     var _this = this;
                     this._observable.subscribe(this._comment.create(this.comment), function (comment) {

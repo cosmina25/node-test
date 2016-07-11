@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'angular2/http', 'angular2-cookie/core', '../directives/alert/component', '../user/component', '../comment/component', '../common/extensions', '../common/utilities'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/http', 'angular2-cookie/core', '../directives/alert/component', '../user/component', '../comment/component', '../common/extensions', '../common/utilities', "../poster/component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', 'angular2-
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, http_1, core_2, component_1, component_2, component_3, extensions_1, utilities_1;
+    var core_1, router_1, http_1, core_2, component_1, component_2, component_3, extensions_1, utilities_1, component_4;
     var AppComponent;
     return {
         setters:[
@@ -40,6 +40,9 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', 'angular2-
             },
             function (utilities_1_1) {
                 utilities_1 = utilities_1_1;
+            },
+            function (component_4_1) {
+                component_4 = component_4_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -75,6 +78,11 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', 'angular2-
                             name: 'Comment',
                             component: component_3.CommentListComponent,
                             useAsDefault: true
+                        },
+                        {
+                            path: '/posters',
+                            name: 'Poster',
+                            component: component_4.PosterComponent
                         }
                     ]), 
                     __metadata('design:paramtypes', [component_2.UserService])

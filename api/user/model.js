@@ -31,10 +31,15 @@ var UserSchema = new Schema({
         required: true,
         select: false
     },
+    roles: {
+        type: [String],
+        default: []
+    },
 
     salt: { // Salty
         type: String,
         select: false
+
     }
 }, { timestamps: { createdAt: 'created', updatedAt: 'updated' } });
 
