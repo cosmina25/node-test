@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../directives/alert/component', '../directives/pagination/component', '../badge/component', '../user/service', '../common/utilities', '../user/component', './model', './service', '../poster/component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../directives/alert/component', '../directives/pagination/component', '../badge/component', '../user/service', '../common/utilities', '../user/component', './model', './service', '../poster/component', "../poster/service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, component_1, component_2, component_3, service_1, utilities_1, component_4, model_1, service_2, component_5;
+    var core_1, router_1, component_1, component_2, component_3, service_1, utilities_1, component_4, model_1, service_2, component_5, service_3;
     var CommentListComponent;
     return {
         setters:[
@@ -46,14 +46,18 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
             },
             function (component_5_1) {
                 component_5 = component_5_1;
+            },
+            function (service_3_1) {
+                service_3 = service_3_1;
             }],
         execute: function() {
             CommentListComponent = (function () {
-                function CommentListComponent(_comment, _router, _params, _user, _observable) {
+                function CommentListComponent(_comment, _router, _params, _user, _poster, _observable) {
                     this._comment = _comment;
                     this._router = _router;
                     this._params = _params;
                     this._user = _user;
+                    this._poster = _poster;
                     this._observable = _observable;
                     this.signup = false;
                     this.user = new component_4.User;
@@ -67,6 +71,7 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
                     this.signup = this._params.get('action') === 'signup';
                     this._observable.subscribe(this._user.retrieve(), function (user) {
                         _this.user = user;
+                        _this._observable.subscribe(_this._poster.retrieve(), function (poster) { return _this.poster = poster; });
                         // Poster service get
                     });
                     var page = this._params.get("page");
@@ -99,7 +104,7 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
                     var _this = this;
                     this._observable.subscribe(this._comment.create(this.comment), function (comment) {
                         _this.comment.content = '';
-                        _this._alert.add(new component_1.Alert('success', 'Commet creat!'));
+                        _this._alert.add(new component_1.Alert('success', 'Comment creat!'));
                         _this.update();
                     });
                 };
@@ -117,10 +122,11 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
                             component_3.BadgeComponent
                         ],
                         providers: [
-                            service_2.CommentService
+                            service_2.CommentService,
+                            service_3.PosterService
                         ]
                     }), 
-                    __metadata('design:paramtypes', [service_2.CommentService, router_1.Router, router_1.RouteParams, service_1.UserService, utilities_1.ObservableUtilities])
+                    __metadata('design:paramtypes', [service_2.CommentService, router_1.Router, router_1.RouteParams, service_1.UserService, service_3.PosterService, utilities_1.ObservableUtilities])
                 ], CommentListComponent);
                 return CommentListComponent;
             }());

@@ -1,7 +1,7 @@
 <form class="scoutech-form" *ngIf="!user._id" (ngSubmit)="submit()" novalidate>
     <div class="ui-40">
         <div class="ui-head bg-green">
-            <h2>Credentiale</h2>
+            <h2>Mine</h2>
         </div>
         <div class="ui-block bg-white">
             <div class="ui-icon">
@@ -24,6 +24,12 @@
         <div class="clearfix"></div>
         <div class="ui-foot bg-green">
             <button type="submit" class="ui-button">{{action == 'create' ? 'Signup' : 'Signin'}}</button>
+        </div>
+        <div class="clearfix"></div>
+        <div class="ui-action bg-white">
+            <div class="text-center">
+                <a [routerLink]="['Poster']"><h4>{{ poster ? 'Profil' : 'Devino Poster'}}</h4></a>
+            </div>
         </div>
     </div>
 </form>

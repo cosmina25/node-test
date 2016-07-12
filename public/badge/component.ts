@@ -54,7 +54,7 @@ export class BadgeComponent implements OnInit {
         }
 
 
-        let defaultBadges = ['fa-bomb', 'fa-cubes', 'fa-heart'] ;
+        let defaultBadges = ['fa-bomb', 'fa-cubes', 'fa-heart', this.poster.badge] ;
         for(let defaultBadge of defaultBadges) {
             if(!count[defaultBadge] && count[defaultBadge] !==0 ) {
                 this.badges.push({

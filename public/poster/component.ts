@@ -38,14 +38,14 @@ export class PosterComponent implements OnInit {
     create () {
         this._observable.subscribe(this._poster.create(this.poster), user => {
             this._alert.add(new Alert('success', 'Esti un poster!'));
-            this._router.navigate(['User', { action: 'panel' }])
+            this._router.navigate(['Comment']);
         });
     }
 
     update () {
         this._observable.subscribe(this._poster.update(this.poster), user => {
             this._alert.add(new Alert('success', 'Modificat cu succes!'));
-            this._router.navigate(['User', { action: 'panel' }])
+            this._router.navigate(['Comment']);
         });
     }
 

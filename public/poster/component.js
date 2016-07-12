@@ -54,14 +54,14 @@ System.register(['angular2/core', 'angular2/router', '../directives/alert/compon
                     var _this = this;
                     this._observable.subscribe(this._poster.create(this.poster), function (user) {
                         _this._alert.add(new component_1.Alert('success', 'Esti un poster!'));
-                        _this._router.navigate(['User', { action: 'panel' }]);
+                        _this._router.navigate(['Comment']);
                     });
                 };
                 PosterComponent.prototype.update = function () {
                     var _this = this;
                     this._observable.subscribe(this._poster.update(this.poster), function (user) {
                         _this._alert.add(new component_1.Alert('success', 'Modificat cu succes!'));
-                        _this._router.navigate(['User', { action: 'panel' }]);
+                        _this._router.navigate(['Comment']);
                     });
                 };
                 PosterComponent.prototype.submit = function () {

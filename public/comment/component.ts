@@ -12,6 +12,7 @@ import{ User} from '../user/component';
 import { Comment, CommentList} from './model'
 import { CommentService } from './service';
 import { Poster } from '../poster/component';
+import {PosterService} from "../poster/service";
 
 
 @Component({
@@ -24,7 +25,8 @@ import { Poster } from '../poster/component';
        
     ],
     providers: [
-        CommentService
+        CommentService,
+        PosterService
     ]
 })
 export class CommentListComponent implements OnInit {
@@ -41,6 +43,7 @@ export class CommentListComponent implements OnInit {
         private _router: Router,
         private _params: RouteParams,
         private _user: UserService,
+        private _poster: PosterService,
         private _observable: ObservableUtilities
     ) {}
 
@@ -48,6 +51,7 @@ export class CommentListComponent implements OnInit {
         this.signup = this._params.get('action') === 'signup';
         this._observable.subscribe(this._user.retrieve(), user => {
             this.user = user;
+            this._observable.subscribe(this._poster.retrieve(), poster => this.poster = poster);
             // Poster service get
         });
         let page = this._params.get("page");
@@ -89,7 +93,7 @@ export class CommentListComponent implements OnInit {
         this._observable.subscribe(this._comment.create(this.comment), comment => {
 
             this.comment.content = '';
-            this._alert.add(new Alert('success', 'Commet creat!'));
+            this._alert.add(new Alert('success', 'Comment creat!'));
             this.update();
         });
     }

@@ -1,4 +1,4 @@
-System.register(['angular2/core', './service', '../user/service', '../comment/component', './model', "../common/utilities"], function(exports_1, context_1) {
+System.register(['angular2/core', './service', '../user/service', '../comment/component', './model', '../poster/model', "../common/utilities"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './service', '../user/service', '../comment/co
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, service_1, service_2, component_1, model_1, utilities_1;
+    var core_1, service_1, service_2, component_1, model_1, model_2, utilities_1;
     var BadgeCount, BadgeComponent;
     return {
         setters:[
@@ -28,6 +28,9 @@ System.register(['angular2/core', './service', '../user/service', '../comment/co
             },
             function (model_1_1) {
                 model_1 = model_1_1;
+            },
+            function (model_2_1) {
+                model_2 = model_2_1;
             },
             function (utilities_1_1) {
                 utilities_1 = utilities_1_1;
@@ -60,7 +63,7 @@ System.register(['angular2/core', './service', '../user/service', '../comment/co
                             });
                         }
                     }
-                    var defaultBadges = ['fa-bomb', 'fa-cubes', 'fa-heart'];
+                    var defaultBadges = ['fa-bomb', 'fa-cubes', 'fa-heart', this.poster.badge];
                     for (var _b = 0, defaultBadges_1 = defaultBadges; _b < defaultBadges_1.length; _b++) {
                         var defaultBadge = defaultBadges_1[_b];
                         if (!count[defaultBadge] && count[defaultBadge] !== 0) {
@@ -86,6 +89,10 @@ System.register(['angular2/core', './service', '../user/service', '../comment/co
                     core_1.Input(), 
                     __metadata('design:type', component_1.Comment)
                 ], BadgeComponent.prototype, "comment", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', model_2.Poster)
+                ], BadgeComponent.prototype, "poster", void 0);
                 BadgeComponent = __decorate([
                     core_1.Component({
                         selector: 'badges',
