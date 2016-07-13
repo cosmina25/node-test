@@ -18,7 +18,8 @@
     </div>
     <div class="comment" *ngFor="let comment of list.items; let i = index">
         <div class="comment-main">
-            <div>Created by {{poster ? poster.name : 'Annonymous'}}</div>
+            <div>Created by {{poster ? poster.name : 'Annonymous'}}  </div>
+            <div> Description : {{poster ? poster.description : ''}} </div>
             <badges [(comment)]="list.items[i]" [(poster)]="poster"></badges>
             <div class="comment-content" [innerHTML]="comment.content"></div>
         </div>
